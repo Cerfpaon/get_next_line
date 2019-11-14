@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-void	fill(char *src, char *dst, char end)
+void	fill(char *dst, const char *src, char end)
 {
 	int i;
 
@@ -11,4 +11,31 @@ void	fill(char *src, char *dst, char end)
 		i++;
 	}
 	dst[i] = '\0';
+}
+
+int		concat(char **line, char *buff, char end)
+{
+	char	*new_line;
+	int		len_line;
+	int		len_buff;
+	
+	len_line = 0;
+	if (*line)
+	{
+		len_line = 0;
+		while ((*line)[len_line])
+			len_line++;
+	}
+	len_buff = 0;
+	while (buff[len_buff])
+		len_buff++;
+	if (!(new_line = (char *)malloc(sizeof(char) *
+	(len_line + len_buff + 1))))
+		return (-1);
+	if (*line)
+		fill(new_line, *line, end);
+	fill(&new_line[len_line], buff, end);
+	free(*line);
+	*line = new_line;
+	return (0);
 }
