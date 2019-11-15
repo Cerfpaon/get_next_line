@@ -39,3 +39,14 @@ int		concat(char **line, char *buff, char end)
 	*line = new_line;
 	return (0);
 }
+
+int		only_eof(char **line)
+{
+	if (!*line)
+	{
+		if (!(*line = (char *)malloc(1)))
+			return (-1);
+		**line = '\0';
+	}
+	return (0);
+}

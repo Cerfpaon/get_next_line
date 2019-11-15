@@ -72,6 +72,8 @@ int	get_next_line(int fd, char **line)
 		if ((ret = buff_mgmt(&rest, line, buff)))
 			return (ret);
 	}
+	if (only_eof(line))
+		return (-1);
 	free(rest);
 	rest = NULL;
 	return (0);

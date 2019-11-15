@@ -19,6 +19,7 @@ int		get_next_line(int fd, char **line);
 // get_next_line_utils
 void	fill(char *dst, const char *src, char end);
 int		concat(char **line, char *buff, char end);
+int		only_eof(char **line);
 
 
 #endif
